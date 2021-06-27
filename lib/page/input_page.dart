@@ -1,12 +1,18 @@
+import 'package:bmi_calculator/widget/sexCard.dart';
 import 'package:flutter/material.dart';
+
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:bmi_calculator/widget/base_card.dart';
 import 'package:bmi_calculator/widget/bottom.dart';
 
-const bottomContainerHeight = 80.0;
-const backgroundColour = 0xff1d1f33;
-const bottomContainerColour = 0xffeb1555;
-const bottomContainerMarginTop = 10.0;
+const double bottomContainerHeight = 80.0;
+const int backgroundColour = 0xff1d1f33;
+const int bottomContainerColour = 0xffeb1555;
+const double bottomContainerMarginTop = 10.0;
+const double iconSize = 80.0;
+const Color textColour = Color(0xff8d8e98);
+const double textFontSize = 18.0;
 
 class InputPage extends StatefulWidget {
   @override
@@ -28,6 +34,14 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: BaseCard(
                     colour: Color(backgroundColour),
+                    childCard: SexCard(
+                      textColour: textColour,
+                      textFontSize: textFontSize,
+                      iconProp: Icon(
+                        FontAwesomeIcons.mars,
+                        size: iconSize,
+                      ),
+                    )
                   ),
                 ),
                 Expanded(
