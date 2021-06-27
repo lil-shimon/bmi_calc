@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// required iconProp, textColour, textFontSize
+/// required iconProp, textColour, textFontSize, text
 class SexCard extends StatelessWidget {
   SexCard({
     @required this.textColour,
@@ -9,9 +9,9 @@ class SexCard extends StatelessWidget {
     @required this.text,
   });
 
-  final Color textColour;
+  final Color  textColour;
   final double textFontSize;
-  final Icon iconProp;
+  final Icon   iconProp;
   final String text;
 
   @override
