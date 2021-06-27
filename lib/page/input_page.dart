@@ -48,6 +48,15 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: BaseCard(
                     colour: Color(backgroundColour),
+                    childCard: SexCard(
+                      text: "FEMALE",
+                      textFontSize: textFontSize,
+                      textColour: textColour,
+                      iconProp: Icon(
+                        FontAwesomeIcons.venus,
+                        size: iconSize,
+                      ),
+                    ),
                   ),
                 ),
               ],
