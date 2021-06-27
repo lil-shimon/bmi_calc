@@ -35,6 +35,7 @@ class _InputPageState extends State<InputPage> {
                   child: BaseCard(
                     colour: Color(backgroundColour),
                     childCard: SexCard(
+                      text: "MALE",
                       textColour: textColour,
                       textFontSize: textFontSize,
                       iconProp: Icon(
