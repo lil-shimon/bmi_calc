@@ -18,10 +18,7 @@ const double textFontSize = 18.0;
 const Color textColour = Color(0xff8d8e98);
 
 /// 性別オプション
-enum SexOption {
-  male,
-  female
-}
+enum SexOption { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -31,33 +28,8 @@ class InputPage extends StatefulWidget {
 /// this is the page of input option for calc BMI
 /// states are maleColour, femaleColour
 class _InputPageState extends State<InputPage> {
-  int maleColour = inActiveCardColour;
-  int femaleColour = inActiveCardColour;
-
-  /// change card colour func
-  /// require gender
-  /// 1 = male, 2 = female
-  void updateGenderColour(SexOption enumGender) {
-
-    /// in case gender is male
-    if (enumGender == SexOption.male) {
-      if (maleColour == inActiveCardColour) {
-        maleColour = backgroundColour;
-        femaleColour = inActiveCardColour;
-      } else {
-        maleColour = inActiveCardColour;
-      }
-
-      /// in case gender is female
-    } else {
-      if (femaleColour == inActiveCardColour) {
-        femaleColour = backgroundColour;
-        maleColour = inActiveCardColour;
-      } else {
-        femaleColour = inActiveCardColour;
-      }
-    }
-  }
+  /// 選択されている性別
+  SexOption selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -74,31 +46,36 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateGenderColour(SexOption.male);
+                        selectedGender = SexOption.male;
                       });
                     },
                     child: BaseCard(
-                        colour: Color(maleColour),
-                        childCard: SexCard(
-                          text: "MALE",
-                          textColour: textColour,
-                          textFontSize: textFontSize,
-                          iconProp: Icon(
-                            FontAwesomeIcons.mars,
-                            size: iconSize,
-                          ),
-                        )),
+                      colour: selectedGender == SexOption.male
+                          ? Color(backgroundColour)
+                          : Color(inActiveCardColour),
+                      childCard: SexCard(
+                        text: "MALE",
+                        textColour: textColour,
+                        textFontSize: textFontSize,
+                        iconProp: Icon(
+                          FontAwesomeIcons.mars,
+                          size: iconSize,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateGenderColour(SexOption.female);
+                        selectedGender = SexOption.female;
                       });
                     },
                     child: BaseCard(
-                      colour: Color(femaleColour),
+                      colour: selectedGender == SexOption.female
+                          ? Color(backgroundColour)
+                          : Color(inActiveCardColour),
                       childCard: SexCard(
                         text: "FEMALE",
                         textFontSize: textFontSize,
