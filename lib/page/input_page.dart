@@ -17,6 +17,12 @@ const double iconSize = 80.0;
 const double textFontSize = 18.0;
 const Color textColour = Color(0xff8d8e98);
 
+/// 性別オプション
+enum SexOption {
+  male,
+  female
+}
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -31,10 +37,10 @@ class _InputPageState extends State<InputPage> {
   /// change card colour func
   /// require gender
   /// 1 = male, 2 = female
-  void updateGenderColour(int gender) {
+  void updateGenderColour(SexOption enumGender) {
 
     /// in case gender is male
-    if (gender == 1) {
+    if (enumGender == SexOption.male) {
       if (maleColour == inActiveCardColour) {
         maleColour = backgroundColour;
         femaleColour = inActiveCardColour;
@@ -68,7 +74,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateGenderColour(1);
+                        updateGenderColour(SexOption.male);
                       });
                     },
                     child: BaseCard(
@@ -88,7 +94,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateGenderColour(2);
+                        updateGenderColour(SexOption.female);
                       });
                     },
                     child: BaseCard(
