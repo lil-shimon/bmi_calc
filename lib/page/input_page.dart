@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/widget/sexCard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -43,47 +44,43 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: BaseCard(
+                    onPress: () {
                       setState(() {
                         selectedGender = SexOption.male;
                       });
                     },
-                    child: BaseCard(
-                      colour: selectedGender == SexOption.male
-                          ? Color(backgroundColour)
-                          : Color(inActiveCardColour),
-                      childCard: SexCard(
-                        text: "MALE",
-                        textColour: textColour,
-                        textFontSize: textFontSize,
-                        iconProp: Icon(
-                          FontAwesomeIcons.mars,
-                          size: iconSize,
-                        ),
+                    colour: selectedGender == SexOption.male
+                        ? Color(backgroundColour)
+                        : Color(inActiveCardColour),
+                    childCard: SexCard(
+                      text: "MALE",
+                      textColour: textColour,
+                      textFontSize: textFontSize,
+                      iconProp: Icon(
+                        FontAwesomeIcons.mars,
+                        size: iconSize,
                       ),
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: BaseCard(
+                    onPress: () {
                       setState(() {
                         selectedGender = SexOption.female;
                       });
                     },
-                    child: BaseCard(
-                      colour: selectedGender == SexOption.female
-                          ? Color(backgroundColour)
-                          : Color(inActiveCardColour),
-                      childCard: SexCard(
-                        text: "FEMALE",
-                        textFontSize: textFontSize,
-                        textColour: textColour,
-                        iconProp: Icon(
-                          FontAwesomeIcons.venus,
-                          size: iconSize,
-                        ),
+                    colour: selectedGender == SexOption.female
+                        ? Color(backgroundColour)
+                        : Color(inActiveCardColour),
+                    childCard: SexCard(
+                      text: "FEMALE",
+                      textFontSize: textFontSize,
+                      textColour: textColour,
+                      iconProp: Icon(
+                        FontAwesomeIcons.venus,
+                        size: iconSize,
                       ),
                     ),
                   ),
