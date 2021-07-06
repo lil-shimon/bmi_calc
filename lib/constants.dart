@@ -10,3 +10,15 @@ const double kBottomContainerHeight = 80.0;
 const double kIconSize = 80.0;
 const double kTextFontSize = 18.0;
 const Color kTextColour = Color(0xff8d8e98);
+
+/// 共通テキスト定義
+const kLabelTextStyle = TextStyle(
+  fontSize: kTextFontSize,
+  color: kTextColour,
+);
+
+/// 強調テキスト定義
+const kBoldTextStyle = TextStyle(
+    fontSize: 50.0,
+    fontWeight: FontWeight.w900,
+);

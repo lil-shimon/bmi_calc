@@ -23,6 +23,9 @@ class _InputPageState extends State<InputPage> {
   /// 選択されている性別
   SexOption selectedGender;
 
+  /// 身長ステート
+  int height = 180;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +88,42 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: BaseCard(
                     colour: Color(kBackgroundColour),
+                    childCard: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "HEIGHT",
+                          style: kLabelTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(
+                              height.toString(),
+                              style: kBoldTextStyle,
+                            ),
+                            Text(
+                              "cm",
+                              style: kLabelTextStyle,
+                            ),
+                          ],
+                        ),
+                        Slider(
+                          value: height.toDouble(),
+                          min: 120.0,
+                          max: 220.0,
+                          activeColor: Color(0xFFEB1555),
+                          inactiveColor: Color(0xff8d8e98),
+                          onChanged: (double newValue) {
+                            setState(() {
+                              height = newValue.round();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
