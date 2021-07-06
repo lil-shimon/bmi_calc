@@ -7,16 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/widget/base_card.dart';
 import 'package:bmi_calculator/widget/bottom.dart';
 
-/// TODO: change those types from integer to Color
-/// [backgroundColour], [inActiveCardColour] and [bottomContainerColour]
-const int backgroundColour = 0xff1d1e33;
-const int inActiveCardColour = 0xff111328;
-const int bottomContainerColour = 0xffeb1555;
-const double bottomContainerMarginTop = 10.0;
-const double bottomContainerHeight = 80.0;
-const double iconSize = 80.0;
-const double textFontSize = 18.0;
-const Color textColour = Color(0xff8d8e98);
+import '../constants.dart';
 
 /// 性別オプション
 enum SexOption { male, female }
@@ -51,15 +42,15 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == SexOption.male
-                        ? Color(backgroundColour)
-                        : Color(inActiveCardColour),
+                        ? Color(kBackgroundColour)
+                        : Color(kInActiveCardColour),
                     childCard: SexCard(
                       text: "MALE",
-                      textColour: textColour,
-                      textFontSize: textFontSize,
+                      textColour: kTextColour,
+                      textFontSize: kTextFontSize,
                       iconProp: Icon(
                         FontAwesomeIcons.mars,
-                        size: iconSize,
+                        size: kIconSize,
                       ),
                     ),
                   ),
@@ -72,15 +63,15 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == SexOption.female
-                        ? Color(backgroundColour)
-                        : Color(inActiveCardColour),
+                        ? Color(kBackgroundColour)
+                        : Color(kInActiveCardColour),
                     childCard: SexCard(
                       text: "FEMALE",
-                      textFontSize: textFontSize,
-                      textColour: textColour,
+                      textFontSize: kTextFontSize,
+                      textColour: kTextColour,
                       iconProp: Icon(
                         FontAwesomeIcons.venus,
-                        size: iconSize,
+                        size: kIconSize,
                       ),
                     ),
                   ),
@@ -93,7 +84,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: BaseCard(
-                    colour: Color(backgroundColour),
+                    colour: Color(kBackgroundColour),
                   ),
                 ),
               ],
@@ -104,21 +95,21 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: BaseCard(
-                    colour: Color(backgroundColour),
+                    colour: Color(kBackgroundColour),
                   ),
                 ),
                 Expanded(
                   child: BaseCard(
-                    colour: Color(backgroundColour),
+                    colour: Color(kBackgroundColour),
                   ),
                 ),
               ],
             ),
           ),
           BottomContainer(
-            colour: Color(bottomContainerColour),
-            height: bottomContainerHeight,
-            marginTop: bottomContainerMarginTop,
+            colour: Color(kBottomContainerColour),
+            height: kBottomContainerHeight,
+            marginTop: kBottomContainerMarginTop,
           )
         ],
       ),
