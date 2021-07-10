@@ -1,6 +1,5 @@
 import 'package:bmi_calculator/widget/sexCard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -165,11 +164,29 @@ class _InputPageState extends State<InputPage> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              RoundIconButton(icon: FontAwesomeIcons.minus),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      weight--;
+                                    },
+                                  );
+                                },
+                              ),
                               SizedBox(
                                 width: 10.0,
                               ),
-                              RoundIconButton(icon: FontAwesomeIcons.plus),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      weight++;
+                                    },
+                                  );
+                                },
+                              ),
                             ])
                       ],
                     ),
@@ -196,13 +213,18 @@ class _InputPageState extends State<InputPage> {
 
 /// カスタムボタンwidget
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton({this.icon});
+  RoundIconButton({@required this.icon, @required this.onPressed});
+
   final IconData icon;
+
+  /// stateLessWidgetのためstateChangeは渡す
+  final Function onPressed;
+
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       child: Icon(icon),
-      onPressed: () {},
+      onPressed: onPressed,
       elevation: 6.0,
       shape: CircleBorder(),
       constraints: BoxConstraints.tightFor(
