@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/widget/round_icon_button.dart';
 import 'package:bmi_calculator/widget/sexCard.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,9 @@ class _InputPageState extends State<InputPage> {
 
   /// 体重ステート
   int weight = 60;
+
+  /// 年齢ステート
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -195,6 +199,45 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: BaseCard(
                     colour: Color(kBackgroundColour),
+                    childCard: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "AGE",
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kBoldTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressed: () {
+                                  setState(
+                                        () {
+                                      age--;
+                                    },
+                                  );
+                                }),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressed: () {
+                                  setState(
+                                        () {
+                                      age++;
+                                    },
+                                  );
+                                }),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -207,31 +250,6 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
-    );
-  }
-}
-
-/// カスタムボタンwidget
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.onPressed});
-
-  final IconData icon;
-
-  /// stateLessWidgetのためstateChangeは渡す
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      onPressed: onPressed,
-      elevation: 6.0,
-      shape: CircleBorder(),
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      fillColor: Color(0xff4c4f5e),
     );
   }
 }
