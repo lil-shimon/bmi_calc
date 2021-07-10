@@ -26,6 +26,9 @@ class _InputPageState extends State<InputPage> {
   /// 身長ステート
   int height = 180;
 
+  /// 体重ステート
+  int weight = 60;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,6 +118,7 @@ class _InputPageState extends State<InputPage> {
                             activeTrackColor: Colors.white,
                             inactiveTrackColor: Color(0xff8d8e98),
                             thumbColor: Color(0xffeb1555),
+
                             /// transparent -> 0x15
                             /// [overlayColor] -> opacity 16%
                             overlayColor: Color(0x29eb1555),
@@ -147,6 +151,28 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: BaseCard(
                     colour: Color(kBackgroundColour),
+                    childCard: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "WEIGHT",
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kBoldTextStyle,
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundIconButton(icon: FontAwesomeIcons.minus),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              RoundIconButton(icon: FontAwesomeIcons.plus),
+                            ])
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
@@ -164,6 +190,26 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+/// カスタムボタンwidget
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({this.icon});
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+      onPressed: () {},
+      elevation: 6.0,
+      shape: CircleBorder(),
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      fillColor: Color(0xff4c4f5e),
     );
   }
 }
