@@ -9,9 +9,9 @@ class SexCard extends StatelessWidget {
     @required this.text,
   });
 
-  final Color  textColour;
+  final Color textColour;
   final double textFontSize;
-  final Icon   iconProp;
+  final Icon iconProp;
   final String text;
 
   @override
@@ -23,11 +23,13 @@ class SexCard extends StatelessWidget {
         SizedBox(
           height: 15.0,
         ),
-        Text(text,
-            style: TextStyle(
-              color: textColour,
-              fontSize: textFontSize,
-            )),
+        Text(
+          text,
+          style: TextStyle(
+            color: textColour,
+            fontSize: textFontSize,
+          ),
+        ),
       ],
     );
   }
