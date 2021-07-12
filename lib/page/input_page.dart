@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/calclator_brain.dart';
 import 'package:bmi_calculator/widget/bottom_button.dart';
 import 'package:bmi_calculator/widget/results_page.dart';
 import 'package:bmi_calculator/widget/round_icon_button.dart';
@@ -167,32 +168,33 @@ class _InputPageState extends State<InputPage> {
                           style: kBoldTextStyle,
                         ),
                         Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              RoundIconButton(
-                                icon: FontAwesomeIcons.minus,
-                                onPressed: () {
-                                  setState(
-                                    () {
-                                      weight--;
-                                    },
-                                  );
-                                },
-                              ),
-                              SizedBox(
-                                width: 10.0,
-                              ),
-                              RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                onPressed: () {
-                                  setState(
-                                    () {
-                                      weight++;
-                                    },
-                                  );
-                                },
-                              ),
-                            ])
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    weight--;
+                                  },
+                                );
+                              },
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    weight++;
+                                  },
+                                );
+                              },
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -227,14 +229,15 @@ class _InputPageState extends State<InputPage> {
                               width: 10.0,
                             ),
                             RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                onPressed: () {
-                                  setState(
-                                    () {
-                                      age++;
-                                    },
-                                  );
-                                }),
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    age++;
+                                  },
+                                );
+                              },
+                            ),
                           ],
                         )
                       ],
@@ -247,8 +250,18 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonText: "CALCULATE",
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultsPage()));
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(
+                    calculateBmi: calc.calculateBMI(),
+                    result: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
+                  ),
+                ),
+              );
             },
           )
         ],

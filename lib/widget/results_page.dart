@@ -7,6 +7,16 @@ import 'base_card.dart';
 
 /// result page
 class ResultsPage extends StatelessWidget {
+
+  ResultsPage(
+      {@required this.calculateBmi,
+      @required this.result,
+      @required this.interpretation});
+
+  final String calculateBmi;
+  final String result;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,15 +46,15 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "normal",
+                    result,
                     style: kResultNormalTextStyle,
                   ),
                   Text(
-                    "14.7",
+                    calculateBmi,
                     style: kBMITextStyle,
                   ),
                   Text(
-                    "Your BMI result is quite low, you should eat more",
+                    interpretation,
                     textAlign: TextAlign.center,
                     style: kBodyTextStyle,
                   ),
